@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
+import RefreshIcon from '@mui/icons-material/Refresh';
 import { useContext } from 'react';
 import { ThemeContext } from '../../App';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
@@ -26,12 +27,15 @@ export const Header = () => {
                         sx={{ mr: 2 }}
                         onClick={toggleTheme}
                     >
-                        {theme === DEFAULT_THEME ? < DarkModeIcon /> : <LightModeIcon />}
+                        {theme === DEFAULT_THEME ? <LightModeIcon /> : < DarkModeIcon />}
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         React Tic Tac Toe
                     </Typography>
-                    <Button color="inherit">New Game</Button>
+                    <Button color="inherit">
+                        <RefreshIcon fontSize='small' />
+                        New Game
+                    </Button>
                 </Toolbar>
             </AppBar>
         </Box>
