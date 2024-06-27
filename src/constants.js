@@ -1,2 +1,11 @@
 export const DEFAULT_THEME = 'main';
 export const DARK_THEME = 'dark';
+export const DARK_THEME_BODY = 'darkBody'
+export const GAME_NAME = 'React Tic Tac Toe';
+export const NEW_GAME = 'New Game';
+export const PLAYER1 = 'Player 1 (X)';
+export const PLAYER2 = 'Player 2 (O)';
+export const EDIT_MODE = 'Edit';
+export const SAVE_MODE = 'Save'
+export const TURN_PLAYER1 = 'X';
+export const TURN_PLAYER2 = 'O';
