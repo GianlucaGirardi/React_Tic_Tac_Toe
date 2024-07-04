@@ -1,23 +1,50 @@
 import { winningConfig } from '../../configurations';
-import { gameboardMap } from './GameboardCol';
+import { gameboardMap } from './Gameboard';
 
-export const markTile = (tileId, turn, setTurn, setGameOver) => {
+export const markTile = (tileId, turn, numFreeTiles, setTurn, setGameOver, setNumFreeTiles, setWinner) => {
     gameboardMap.set(tileId, turn);
-    checkForWin(setGameOver);
+    checkForWin(setGameOver, setWinner);
     setTurn(turn === 'X' ? 'O' : 'X');
+    setNumFreeTiles(numFreeTiles - 1);
     return turn;
 }
 
-export const checkForWin = (setGameOver) => {
+export const checkForWin = (setGameOver, setWinner) => {
     if (gameboardMap.size > 2) {
         for (let i = 0; i < winningConfig.length; i++) {
-            if (gameboardMap.has(winningConfig[i][0]) && gameboardMap.has(winningConfig[i][1]) && gameboardMap.has(winningConfig[i][1])) {
+            if (gameboardMap.has(winningConfig[i][0]) && gameboardMap.has(winningConfig[i][1]) && gameboardMap.has(winningConfig[i][2])) {
                 if (gameboardMap.get(winningConfig[i][0]) === gameboardMap.get(winningConfig[i][1]) && gameboardMap.get(winningConfig[i][0]) === gameboardMap.get(winningConfig[i][2])) {
                     setGameOver(true);
+                    setWinner(true);
                     return true;
                 }
             }
         }
     }
     return false;
+}
+
+export const initializeBoard = (tile) => {
+    tile.current.value = '';
+    tile.current.disabled = 'false';
+}
+
+export const initializeMap = (gameboardMap, setRestart, setGameOver, setNumFreeTiles, setWinner) => {
+    gameboardMap.clear();
+    setRestart(false);
+    setGameOver(false);
+    setNumFreeTiles(9);
+    setWinner(false);
+}
+
+export const isRestartBoard = (restart, tile) => {
+    if (restart) {
+        initializeBoard(tile);
+    }
+}
+
+export const isTie = (numFreeTiles, gameOver, setGameOver) => {
+    if (numFreeTiles === 0 && !gameOver) {
+        setGameOver(true);
+    }
 }

@@ -6,15 +6,20 @@ import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
 import { DARK_THEME, DEFAULT_THEME, EDIT_MODE, SAVE_MODE } from "../../../../constants";
 import '../playerBar.css';
 
-export const PlayerInput = ({ buttonMode, setButtonMode, player }) => {
+export const PlayerInput = ({ buttonMode, setButtonMode, player, setPlayerName }) => {
     const { theme } = useContext(ThemeContext);
     const toggleButtonText = (button) => {
         return button === EDIT_MODE ? SAVE_MODE : EDIT_MODE;
     }
 
+    const handleUserInput = (event) => {
+        return setPlayerName(event.target.value);
+    }
+
     return (
         <Grid >
             <TextField id="outlined-basic" label={player} variant="outlined"
+                onChange={handleUserInput}
                 disabled={buttonMode === EDIT_MODE ? true : false}
                 sx={{
                     '& .MuiInputLabel-root.Mui-focused': {
