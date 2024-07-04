@@ -12,7 +12,7 @@ export const gameboardMap = new Map();
 
 export const Gameboard = () => {
     const [gameOver, setGameOver] = useState(false);
-    const [numFreeTiles, setNumFreeTiles] = useState(INITIAL_TILE_NUMBER); //BUG FIX: Game will say tie if there is a winner on the last tile
+    const [numFreeTiles, setNumFreeTiles] = useState(INITIAL_TILE_NUMBER);
     const [restart, setRestart] = useState(false);
     const [winner, setWinner] = useState(false);
     const { theme } = useContext(ThemeContext);
