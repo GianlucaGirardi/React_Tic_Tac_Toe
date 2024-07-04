@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import { ThemeContext } from '../../App';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { DEFAULT_THEME, DARK_THEME } from '../../constants.js'
+import { DEFAULT_THEME, DARK_THEME, GAME_NAME, NEW_GAME } from '../../constants.js'
 
 export const Header = () => {
     const { theme, setTheme } = useContext(ThemeContext);
@@ -29,11 +29,11 @@ export const Header = () => {
                         {theme === DEFAULT_THEME ? <LightModeIcon /> : < DarkModeIcon />}
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        React Tic Tac Toe
+                        {GAME_NAME}
                     </Typography>
                     <Button color="inherit">
                         <RefreshIcon fontSize='small' />
-                        New Game
+                        {NEW_GAME}
                     </Button>
                 </Toolbar>
             </AppBar>
