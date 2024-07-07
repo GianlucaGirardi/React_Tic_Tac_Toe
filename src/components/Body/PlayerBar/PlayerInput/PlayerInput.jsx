@@ -3,52 +3,64 @@ import { useContext } from "react";
 import { ThemeContext } from "../../../../App";
 import EditTwoToneIcon from '@mui/icons-material/EditTwoTone';
 import SaveTwoToneIcon from '@mui/icons-material/SaveTwoTone';
-import { DARK_THEME, DEFAULT_THEME, EDIT_MODE, SAVE_MODE } from "../../../../constants";
+import { EDIT_MODE } from "../../../../constants";
+import { handleColorText, toggleButtonText } from "../../Gameboard/gameboardUtils";
 import '../playerBar.css';
 
 export const PlayerInput = ({ buttonMode, setButtonMode, player, setPlayerName }) => {
     const { theme } = useContext(ThemeContext);
-    const toggleButtonText = (button) => {
-        return button === EDIT_MODE ? SAVE_MODE : EDIT_MODE;
-    }
 
     const handleUserInput = (event) => {
         return setPlayerName(event.target.value);
     }
 
     return (
-        <Grid >
+        <Grid sx={{ display: 'flex' }}>
             <TextField id="outlined-basic" label={player} variant="outlined"
                 onChange={handleUserInput}
                 disabled={buttonMode === EDIT_MODE ? true : false}
                 sx={{
                     '& .MuiInputLabel-root.Mui-focused': {
-                        color: `color.${theme}`,
+                        color: handleColorText(theme),
+                    },
+                    '& .MuiInputBase-input': {
+                        color: handleColorText(theme),
+                    },
+                    '& .MuiInputLabel-root': {
+                        color: handleColorText(theme),
                     },
                     '& .MuiOutlinedInput-root': {
                         '& fieldset': {
-                            borderColor: `color.${theme}`,
+                            borderColor: handleColorText(theme),
+                            color: handleColorText(theme)
                         },
                         '&:hover fieldset': {
-                            borderColor: `color.${theme}`,
+                            borderColor: handleColorText(theme),
                         },
                         '&.Mui-focused fieldset': {
-                            borderColor: `color.${theme}`,
+                            borderColor: handleColorText(theme),
                         },
                         '&.Mui-disabled fieldset': {
-                            borderColor: `color.${theme}`,
+                            borderColor: handleColorText(theme),
                         },
-                    },
-                    "& .MuiInputBase-input.Mui-disabled": {
-                        WebkitTextFillColor: "#000000",
 
                     },
+                    "& .MuiInputBase-input.Mui-disabled": {
+                        WebkitTextFillColor: 'unset',
+                    },
+                    '& .MuiInputLabel-root.Mui-disabled': {
+                        color: handleColorText(theme),
+                    },
                 }} />
-            <IconButton className='player-edit-button'
-                disableRipple onClick={() => setButtonMode(() => toggleButtonText(buttonMode))}>
-                <Typography variant="h6" color={theme === DARK_THEME ? `color.${DARK_THEME}` : `color.${DEFAULT_THEME}`} >{buttonMode}</Typography >
-                {buttonMode === EDIT_MODE ? <EditTwoToneIcon fontSize="lg" /> : <SaveTwoToneIcon fontSize="lg" />}
-            </IconButton>
+            <Grid sx={{ maxWidth: '4.5rem', ml: '0.5rem' }}>
+                <IconButton className='player-edit-button'
+                    disableRipple
+                    onClick={() => setButtonMode(() => toggleButtonText(buttonMode))}>
+                    <Typography variant="h6" color={handleColorText(theme)} >{buttonMode}</Typography >
+                    {buttonMode === EDIT_MODE
+                        ? <EditTwoToneIcon fontSize="lg" sx={{ color: handleColorText(theme) }} />
+                        : <SaveTwoToneIcon fontSize="lg" sx={{ color: handleColorText(theme) }} />}
+                </IconButton></Grid>
         </Grid >
     );
 }

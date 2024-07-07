@@ -3,7 +3,7 @@ import { PlayerBar } from "./PlayerBar/PlayerBar";
 import { Gameboard } from "./Gameboard/Gameboard";
 import { ThemeContext } from "../../App";
 import { useContext } from "react";
-import { DARK_THEME, DARK_THEME_BODY } from "../../constants";
+import { DARK_THEME } from "../../constants";
 import './../../appUtils';
 import './body.css';
 
@@ -14,7 +14,7 @@ export const Body = () => {
             <Paper className="body"
                 elevation={2}
                 square
-                sx={{ backgroundColor: theme === DARK_THEME ? `color.${DARK_THEME_BODY}` : '' }}  >
+                sx={{ backgroundColor: theme === DARK_THEME ? `color.${DARK_THEME}` : '' }}  >
                 <PlayerBar />
                 <Gameboard />
             </Paper>

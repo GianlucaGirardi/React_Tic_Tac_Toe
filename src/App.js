@@ -16,7 +16,7 @@ function App() {
   const [player2Name, setPlayer2Name] = useState(PLAYER2);
   
   return (
-    <div style={{backgroundColor: theme === DARK_THEME? 'lightgrey' : ''}}>
+    <div style={{backgroundColor: theme === DARK_THEME? '#16181d' : ''}}>
       <TurnContext.Provider value={{turn, setTurn, player1Name, setPlayer1Name, player2Name, setPlayer2Name}}>
         <ThemeContext.Provider value={{theme, setTheme}}>
           <ThemeProvider theme={appTheme}>
