@@ -1,5 +1,13 @@
 import { winningConfig } from '../../configurations';
 import { gameboardMap } from './Gameboard';
+import { DARK_THEME, DARK_THEME_TEXT, EDIT_MODE, SAVE_MODE } from '../../../constants';
+
+export const handleColorText = (theme) => {
+    return theme === DARK_THEME ? `color.${DARK_THEME_TEXT}` : `color.${theme}`;
+}
+export const toggleButtonText = (button) => {
+    return button === EDIT_MODE ? SAVE_MODE : EDIT_MODE;
+}
 
 export const markTile = (tileId, turn, numFreeTiles, setTurn, setGameOver, setNumFreeTiles, setWinner) => {
     gameboardMap.set(tileId, turn);
@@ -40,6 +48,12 @@ export const initializeMap = (gameboardMap, setRestart, setGameOver, setNumFreeT
 export const isRestartBoard = (restart, tile) => {
     if (restart) {
         initializeBoard(tile);
+    }
+}
+
+export const isRestartInterface = (gameboardMap, restart, setRestart, setGameOver, setNumFreeTiles, setWinner) => {
+    if (restart) {
+        initializeMap(gameboardMap, setRestart, setGameOver, setNumFreeTiles, setWinner);
     }
 }
 

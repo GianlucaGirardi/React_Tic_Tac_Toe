@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import { createContext, useContext, useState } from "react";
 import { GameboardRow } from "./GameboardRow";
 import { GameOverModal } from "./GameOver/GameOverModal";
-import { initializeMap, isTie } from "./gameboardUtils";
+import { isRestartInterface, isTie, handleColorText } from "./gameboardUtils";
 import { INITIAL_TILE_NUMBER } from './../../../constants';
 import { ThemeContext } from "../../../App";
 import './gameboard.css';
@@ -17,10 +17,7 @@ export const Gameboard = () => {
     const [winner, setWinner] = useState(false);
     const { theme } = useContext(ThemeContext);
 
-    if (restart) {
-        initializeMap(gameboardMap, setRestart, setGameOver, setNumFreeTiles, setWinner);
-    }
-
+    isRestartInterface(gameboardMap, restart, setRestart, setGameOver, setNumFreeTiles, setWinner);
     isTie(numFreeTiles, gameOver, setGameOver);
 
     return (
@@ -32,7 +29,7 @@ export const Gameboard = () => {
                 <GameboardRow rowNum={3} />
             </Grid>
             <Grid >
-                <Typography variant="h6" padding={5} color={`color.${theme}`} sx={{ textAlign: 'center' }}>{`There ${numFreeTiles === 1 ? 'is' : 'are'} ${numFreeTiles} free ${numFreeTiles === 1 ? 'tile' : 'tiles'} left`}</Typography>
+                <Typography variant="h6" padding={5} color={handleColorText(theme)} sx={{ textAlign: 'center' }}>{`There ${numFreeTiles === 1 ? 'is' : 'are'} ${numFreeTiles} free ${numFreeTiles === 1 ? 'tile' : 'tiles'} left`}</Typography>
             </Grid>
         </GameContext.Provider>
     );

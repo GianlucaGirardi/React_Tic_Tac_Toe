@@ -1,5 +1,6 @@
 export const DEFAULT_THEME = 'main';
 export const DARK_THEME = 'dark';
+export const DARK_THEME_TEXT = 'darkText';
 export const DARK_THEME_BODY = 'darkBody'
 export const GAME_NAME = 'React Tic Tac Toe';
 export const NEW_GAME = 'New Game';
