@@ -1,0 +1,16 @@
+.container{
+ padding: 1rem;
+ justify-content: center;
+}
+
+.col{
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid lightgray;
+    margin-bottom: 0.1px;
+    margin-right: 0.1px;
+    align-content: center;
+    text-align: center;
+    font-size: 3.8rem;
+    
+}

@@ -1,25 +1,31 @@
-.game-board-row {
-    display: flex;
-    justify-content: center;
-}
+.gameboard{
 
-.game-board-button {
-    width: 7rem;
-    height: 7rem;
-    margin-bottom: 0.5rem;
-    font-size: 5rem;
-    border-width: 0.1px;
-    border-color: lightgray;
-    background-color: transparent;
+    .game-board-container{
+        padding-top: 4rem;
+    }
+    
+    .game-board-row {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .game-board-button {
+        width: 7rem;
+        height: 7rem;
+        margin-bottom: 0.5rem;
+        font-size: 5rem;
+        border-width: 0.1px;
+        border-color: lightgray;
+        background-color: transparent;
+    }
+    
+    .game-board-button:disabled {
+        width: 7rem;
+        height: 7rem;
+        margin-bottom: 0.5rem;
+        font-size: 5rem;
+        border-width: 0.1px;
+        border-color: lightgray;
+        background-color: transparent;
+    }
 }
-
-.game-board-button:disabled {
-    width: 7rem;
-    height: 7rem;
-    margin-bottom: 0.5rem;
-    font-size: 5rem;
-    border-width: 0.1px;
-    border-color: lightgray;
-    background-color: transparent;
-}
-

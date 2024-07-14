@@ -1,10 +1,12 @@
-.player-bar-container {
-    padding: 0.75rem;
-    justify-content: space-between;
-    display: flex;
-    margin-bottom: 3rem;
-}
-
-.player-edit-button {
-    padding-top: 0.75rem !important;
+.player-bar{
+    
+    .player-bar-container {
+        padding: 0.75rem;
+        justify-content: space-between;
+        display: flex;
+    }
+    
+    .player-edit-button {
+        padding-top: 0.75rem !important;
+    }    
 }

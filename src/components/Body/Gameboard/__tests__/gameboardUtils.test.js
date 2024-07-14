@@ -1,5 +1,5 @@
 import { markTile, checkForWin, initializeMap, isTie } from "./../gameboardUtils";
-import { gameboardMap } from './../Gameboard';
+import { gameboardMap } from './../../Body';
 
 describe('markTile', () => {
     test('Mark the tile with the correct turn', () => {
@@ -9,8 +9,10 @@ describe('markTile', () => {
         const setTurn = jest.fn();
         const setGameOver = jest.fn();
         const setNumFreeTiles = jest.fn();
+        const setWinner = jest.fn();
+        const setPlayerTurnArr = jest.fn()
 
-        const result = markTile(tileId, turn, numFreeTiles, setTurn, setGameOver, setNumFreeTiles);
+        const result = markTile(tileId, turn, numFreeTiles, setTurn, setGameOver, setNumFreeTiles, setWinner, setPlayerTurnArr);
 
         expect(gameboardMap.get(tileId)).toBe(turn);
         expect(result).toBe(turn);
