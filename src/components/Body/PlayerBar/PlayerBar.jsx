@@ -12,8 +12,16 @@ export const PlayerBar = () => {
 
     return (
         <Grid className="player-bar-container"  >
-            <PlayerInput buttonMode={buttonLeftMode} setButtonMode={setButtonLeftMode} player={PLAYER1} playerName={player1Name} setPlayerName={setPlayer1Name} />
-            <PlayerInput buttonMode={buttonRightMode} setButtonMode={setButtonRightMode} player={PLAYER2} playerName={player2Name} setPlayerName={setPlayer2Name} />
+            <PlayerInput buttonMode={buttonLeftMode}
+                setButtonMode={setButtonLeftMode}
+                player={PLAYER1} playerName={player1Name}
+                setPlayerName={setPlayer1Name}
+            />
+            <PlayerInput buttonMode={buttonRightMode}
+                setButtonMode={setButtonRightMode}
+                player={PLAYER2} playerName={player2Name}
+                setPlayerName={setPlayer2Name}
+            />
         </Grid>
     );
 }

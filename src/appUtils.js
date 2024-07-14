@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import { DARK_THEME } from './constants';
 
 export const appTheme = createTheme({
   palette: {
@@ -10,3 +11,7 @@ export const appTheme = createTheme({
     },
   },
 });
+
+export const handleBackgroundTheme = (theme) => {
+  return theme === DARK_THEME ? 'body-dark-theme' : 'body-light-theme';
+}

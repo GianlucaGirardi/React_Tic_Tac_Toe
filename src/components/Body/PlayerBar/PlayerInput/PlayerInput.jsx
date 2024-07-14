@@ -60,7 +60,8 @@ export const PlayerInput = ({ buttonMode, setButtonMode, player, setPlayerName }
                     {buttonMode === EDIT_MODE
                         ? <EditTwoToneIcon fontSize="lg" sx={{ color: handleColorText(theme) }} />
                         : <SaveTwoToneIcon fontSize="lg" sx={{ color: handleColorText(theme) }} />}
-                </IconButton></Grid>
+                </IconButton>
+            </Grid>
         </Grid >
     );
 }

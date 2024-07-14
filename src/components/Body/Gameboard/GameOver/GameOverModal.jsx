@@ -5,21 +5,25 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle'; import { Grid, Typography } from "@mui/material";
 import { useContext, useState } from 'react';
-import { DARK_THEME, GAME_OVER_MESSAGE, TIE_MESSAGE, } from '../../../../constants';
+import {
+    DARK_THEME,
+    GAME_OVER_MESSAGE,
+    TIE_MESSAGE,
+    TURN_PLAYER1,
+    TURN_PLAYER2,
+    BACKGROUND_COLOR_DARK,
+    BACKGROUND_COLOR_LIGHT,
+    TEXT_DARK,
+    TEXT_O_LIGHT,
+    NEW_GAME, RETURN
+} from '../../../../constants';
 import { ThemeContext, TurnContext } from '../../../../App';
-import { handleColorText } from '../gameboardUtils';
+import { handleColorText, handleClose } from '../gameboardUtils';
 
-export const GameOverModal = ({ setRestart, numFreeTiles, winner }) => {
+export const GameOverModal = ({ setRestart, numFreeTiles, winner, setPlayerTurnArr, setGameScreenshots }) => {
     const { theme } = useContext(ThemeContext)
     const { turn, player1Name, player2Name } = useContext(TurnContext);
     const [open, setOpen] = useState(true);
-
-    const handleClose = (option) => {
-        if (option === 0) {
-            setRestart(true);
-        }
-        setOpen(false);
-    };
 
     return (
         <Grid>
@@ -27,33 +31,41 @@ export const GameOverModal = ({ setRestart, numFreeTiles, winner }) => {
                 open={open}
                 onClose={handleClose}>
                 <DialogTitle id="game-over-alert"
-                    sx={{ backgroundColor: theme === DARK_THEME ? `color.${DARK_THEME}` : '' }}>
+                    sx={{ backgroundColor: theme === DARK_THEME ? BACKGROUND_COLOR_DARK : BACKGROUND_COLOR_LIGHT }}>
                     <Typography variant='h3'
                         color={theme === DARK_THEME
-                            ? 'rgb(255, 255, 255)'
-                            : '#2E3440'}>{GAME_OVER_MESSAGE}</Typography>
+                            ? TEXT_DARK
+                            : TEXT_O_LIGHT}>{GAME_OVER_MESSAGE}</Typography>
                 </DialogTitle>
-                <DialogContent sx={{ backgroundColor: theme === DARK_THEME ? `color.${DARK_THEME}` : '' }}>
+                <DialogContent sx={{ backgroundColor: theme === DARK_THEME ? BACKGROUND_COLOR_DARK : BACKGROUND_COLOR_LIGHT }}>
                     <DialogContentText id="alert-dialog-description"
                         sx={{ color: handleColorText(theme) }}>
-                        {numFreeTiles === 0 && !winner ? TIE_MESSAGE : `Winner is ${turn === 'X' ? `O : ${player2Name}` : `X : ${player1Name}`}`}
+                        {numFreeTiles === 0 && !winner
+                            ? TIE_MESSAGE
+                            : `Winner is ${turn === TURN_PLAYER1
+                                ? `${TURN_PLAYER2} : ${player2Name}`
+                                : `${TURN_PLAYER2} : ${player1Name}`
+                            }`
+                        }
                     </DialogContentText>
                 </DialogContent>
-                <DialogActions sx={{ backgroundColor: theme === DARK_THEME ? `color.${DARK_THEME}` : '' }}>
+                <DialogActions sx={{ backgroundColor: theme === DARK_THEME ? BACKGROUND_COLOR_DARK : BACKGROUND_COLOR_LIGHT }}>
                     <Button variant='contained' sx={{
                         backgroundColor: `color.${theme}`,
                         '&:hover': {
                             backgroundColor: `color.${theme}`
                         }
                     }}
-                        onClick={() => handleClose(0)}>
-                        New Game
+                        onClick={() => handleClose(0, setPlayerTurnArr, setOpen, setRestart, setGameScreenshots)}
+                    >
+                        {NEW_GAME}
                     </Button>
                     <Button variant='text'
                         sx={{ color: handleColorText(theme) }}
-                        onClick={() => handleClose(1)}
-                        autoFocus>
-                        Return
+                        onClick={() => handleClose(1, setPlayerTurnArr, setOpen, setRestart, setGameScreenshots)}
+                        autoFocus
+                    >
+                        {RETURN}
                     </Button>
                 </DialogActions>
             </Dialog>

@@ -1,5 +1,5 @@
 import { winningConfig } from '../../configurations';
-import { gameboardMap } from './Gameboard';
+import { gameboardMap } from '../Body';
 import { DARK_THEME, DARK_THEME_TEXT, EDIT_MODE, SAVE_MODE } from '../../../constants';
 
 export const handleColorText = (theme) => {
@@ -9,11 +9,13 @@ export const toggleButtonText = (button) => {
     return button === EDIT_MODE ? SAVE_MODE : EDIT_MODE;
 }
 
-export const markTile = (tileId, turn, numFreeTiles, setTurn, setGameOver, setNumFreeTiles, setWinner) => {
+export const markTile = (tileId, turn, numFreeTiles, setTurn, setGameOver, setNumFreeTiles, setWinner,  
+        setPlayerTurnArr) => {
     gameboardMap.set(tileId, turn);
     checkForWin(setGameOver, setWinner);
     setTurn(turn === 'X' ? 'O' : 'X');
     setNumFreeTiles(numFreeTiles - 1);
+    setPlayerTurnArr(extractGameboard);
     return turn;
 }
 
@@ -30,6 +32,17 @@ export const checkForWin = (setGameOver, setWinner) => {
         }
     }
     return false;
+}
+
+export const extractGameboard = () => {
+    const tempArr1 = [];
+    // gameboardMap.entries().forEach(element => {
+    //      tempArr1.push(element) 
+    // });
+    for (const element of gameboardMap.entries()) {
+        tempArr1.push(element);
+    }
+    return tempArr1;
 }
 
 export const initializeBoard = (tile) => {
@@ -62,3 +75,12 @@ export const isTie = (numFreeTiles, gameOver, setGameOver) => {
         setGameOver(true);
     }
 }
+
+export const handleClose = (option, setPlayerTurnArr, setOpen, setRestart, setGameScreenshots) => {
+    if (option === 0) {
+        setRestart(true);
+        setPlayerTurnArr([]);
+        setGameScreenshots([]);
+    }
+    setOpen(false);
+};
