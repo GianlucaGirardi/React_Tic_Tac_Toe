@@ -29,7 +29,7 @@ export const GameOverModal = ({ setRestart, numFreeTiles, winner, setPlayerTurnA
         <Grid>
             <Dialog
                 open={open}
-                onClose={handleClose}>
+                onClose={() => handleClose(1, setPlayerTurnArr, setOpen, setRestart, setGameScreenshots)}>
                 <DialogTitle id="game-over-alert"
                     sx={{ backgroundColor: theme === DARK_THEME ? BACKGROUND_COLOR_DARK : BACKGROUND_COLOR_LIGHT }}>
                     <Typography variant='h3'
