@@ -16,6 +16,9 @@ This is a simple Tic Tac Toe game built with React. Players can take turns marki
 - Responsive design that works well on desktop.
 - Modal to display game results (winner or tie).
 - Option to start a new game or continue with the current state.
+- Dynamic list in accordion form to track game turns:
+  - Each accordion item includes turn number, player name, player symbol, and selected tile (row and column).
+  - Accordion expands to display a screenshot of the board state at that turn, compatible with dark mode and light mode.
 - Simple and intuitive user interface.
 
 ## Technologies Used
