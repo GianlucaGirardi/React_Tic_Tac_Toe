@@ -1,6 +1,7 @@
 import { Grid, Paper } from "@mui/material";
 import { PlayerBar } from "./PlayerBar/PlayerBar";
 import { Gameboard } from "./Gameboard/Gameboard";
+import { Footer } from "../Footer/Footer";
 import { ThemeContext } from "../../App";
 import { useContext, useState, useRef, useEffect } from "react";
 import { TurnList } from "./TurnList/TurnList";
@@ -39,6 +40,9 @@ export const Body = ({ turn }) => {
                         theme={theme}
                     />
                 </Grid>
+            </Paper>
+            <Paper className="footer" sx={{ borderRadius: 0 }}>
+                <Footer />
             </Paper>
         </Grid>
     );
