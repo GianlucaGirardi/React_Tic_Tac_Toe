@@ -36,9 +36,6 @@ export const checkForWin = (setGameOver, setWinner) => {
 
 export const extractGameboard = () => {
     const tempArr1 = [];
-    // gameboardMap.entries().forEach(element => {
-    //      tempArr1.push(element) 
-    // });
     for (const element of gameboardMap.entries()) {
         tempArr1.push(element);
     }
