@@ -32,7 +32,7 @@ export const TurnList = ({ playerTurnArr, gameScreenshots, theme }) => {
                         </AccordionSummary>
                         <AccordionDetails>
                             <Grid sx={{ borderTop: 2, pt: 2, color: handleColorText(theme) }}>
-                                <Typography variant="p" fontSize={24} p={'4rem'} >{`Snapshot {count}`}</Typography>
+                                <Typography variant="p" fontSize={24} p={'4rem'} >{`Snapshot ${count}`}</Typography>
                             </Grid>
                             <Grid className="css-152lgj-MuiAccordionDetails-root">
                                 <PrevBoard gameScreenshot={gameScreenshots[count - 1]}
